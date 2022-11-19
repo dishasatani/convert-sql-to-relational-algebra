@@ -1,5 +1,5 @@
 # Convert SQL to Relational Algebra
-A tool that converts given sqls to relational algebra.
+A tool that converts given sql to relational algebra.
 
 # Prerequisites
 Before you begin you must have Python installed and configured properly for your computer.
