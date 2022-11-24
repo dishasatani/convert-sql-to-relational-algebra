@@ -1,6 +1,8 @@
+import sys
 import radb
 import radb.ast
 import radb.parse
+import sqlparse
 from sqlparse import sql
 
 # The equivalents of SQL condition in the "radb" library
@@ -287,11 +289,15 @@ def __separate_tokens(sqlstring):
 # The main method accessed from outside the library.
 def translate(sqlstring):
     relation, selection, projection = __separate_tokens(sqlstring)
-
+    
     tree = __create_relation(relation)
     tree = __create_selection(selection, tree)
     tree = __create_projection(projection, tree)
 
-    # todo: optimize
-
     return tree.create_ra(tree.get_last_left_child())
+
+
+if __name__ == "__main__":
+    sql_string = sys.argv[1]
+    stmt = sqlparse.parse(sql_string)[0]
+    print(translate(stmt))

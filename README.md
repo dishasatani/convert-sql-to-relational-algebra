@@ -13,10 +13,13 @@ To run the project, you need to clone this project to your computer. Link: https
 # Run
 To run Convert SQL to Relational Algebra, first go to the path where the project is installed in the terminal.
 
-You can run it using the “python .\sql2ra.py” command, then project name.
+You can run it using the “python .\sql2ra.py "sql_query"” command, then project name.
 
-TODO
-
+```python
+    $ python .\sql2ra.py "select distinct select_from from MiniHive,Select1 WHERE query='select distinct * from MiniHive where age = 16'"
+    
+    >> \project_{select_from} (\select_{query = 'select distinct * from MiniHive where age = 16'} (MiniHive \cross Select1))
+```
 # Running Tests
 To run the tests, "python .\test_sql2ra.py" command should be used in the project directory.
 
